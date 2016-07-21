@@ -2,6 +2,7 @@
 
 
                @section('cuerpoArticle')
+               <h1>este es el login</h1>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
 
