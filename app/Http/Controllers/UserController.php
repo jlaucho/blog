@@ -117,12 +117,18 @@ class UserController extends Controller
 
 
     public function envioEmail(Request $request)
+
     {
-        Mail::send('mails.registros', $data, function ($message) {
+        $data['correo']=$request->correo;
+        $data['texto']=$request->texto;
+        $data['nombre']=$request->nombre;
+
+              
+        Mail::send('mails.registros', ['data'=>$data], function ($message) use($data) {
             //$message->from('john@johndoe.com', 'John Doe');
             //$message->sender('john@johndoe.com', 'John Doe');
         
-            $message->to('jlaucho@gmail.com', 'Jesus Laucho');
+            $message->to($data['correo'], $data['nombre']);
         
             //$message->cc('john@johndoe.com', 'John Doe');
             //$message->bcc('john@johndoe.com', 'John Doe');
@@ -135,5 +141,6 @@ class UserController extends Controller
         
             //$message->attach('pathToFile');
         });
+        return 'se envio el Email';
     }
 }

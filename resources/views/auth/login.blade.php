@@ -9,6 +9,8 @@
                    <div class="panel-body">
                        {!! Form::open(['route'=>'admin.user.eviarmail', 'method'=>'POST']) !!}
 
+                        {!! Form::label('nombre', 'Introduzca su nombre', []) !!}
+                            {!! Form::text('nombre', null, ['class'=>'form-control']) !!}
                         {!! Form::label('correo', 'Initroduzca el email destino', []) !!}
                             {!! Form::email('correo', null, ['class'=>'form-control']) !!}
                         {!! Form::label('texto', 'Indroduzca su mensaje', []) !!}
