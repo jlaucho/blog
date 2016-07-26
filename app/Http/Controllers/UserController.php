@@ -12,6 +12,8 @@ use Laracasts\Flash\Flash;
 
 use App\Http\Requests\UserRequest;
 
+use Mail;
+
 class UserController extends Controller
 {
     /**
@@ -111,5 +113,9 @@ class UserController extends Controller
 
         Flash::error('Se ha eliminado el usuario: '.$user->name);
         return redirect()->route('admin.user.index');
+    }
+    public function envioEmail(Request $request)
+    {
+        dd('Estamos en eviar mail');
     }
 }

@@ -2,6 +2,23 @@
 
 
                @section('cuerpoArticle')
+               <div class="panel panel-info">
+                   <div class="panel-heading">
+                       <h3 class="panel-title">Area de envio de Correo de Prueba</h3>
+                   </div>
+                   <div class="panel-body">
+                       {!! Form::open(['route'=>'admin.user.eviarmail', 'method'=>'POST']) !!}
+
+                        {!! Form::label('correo', 'Initroduzca el email destino', []) !!}
+                            {!! Form::email('correo', null, ['class'=>'form-control']) !!}
+                        {!! Form::label('texto', 'Indroduzca su mensaje', []) !!}
+                            {!! Form::textarea('texto', null, ['class'=>'form-control']) !!}
+                        {!! Form::submit('Enviar correo', ['class'=>'btn btn-primary']) !!}
+
+                       {!! Form::close() !!}
+                   </div>
+               </div>
+               <hr>
                <h1>este</h1>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}

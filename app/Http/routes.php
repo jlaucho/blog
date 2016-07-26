@@ -14,13 +14,17 @@
 Route::get('inicio', function () {
     return view('welcome');
 });
+Route::post('user/mail',[
+        "uses"  =>  "UserController@envioEmail",
+        "as"    =>  "admin.user.eviarmail"
+    ]);
 Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function() {
     Route::resource('user', 'UserController');
     Route::get('user/{id}/destroy',
-    	[
-    		"uses"	=>	"UserController@destroy",
-    		"as"	=>	"admin.user.destroy"
-    	]);
+        [
+            "uses"  =>  "UserController@destroy",
+            "as"    =>  "admin.user.destroy"
+        ]);
 
     Route::resource('category', 'CategoryController');
     Route::get('category/{id}/destroy',[
