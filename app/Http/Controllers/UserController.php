@@ -114,8 +114,26 @@ class UserController extends Controller
         Flash::error('Se ha eliminado el usuario: '.$user->name);
         return redirect()->route('admin.user.index');
     }
+
+
     public function envioEmail(Request $request)
     {
-        dd('Estamos en eviar mail');
+        Mail::send('mails.registros', $data, function ($message) {
+            //$message->from('john@johndoe.com', 'John Doe');
+            //$message->sender('john@johndoe.com', 'John Doe');
+        
+            $message->to('jlaucho@gmail.com', 'Jesus Laucho');
+        
+            //$message->cc('john@johndoe.com', 'John Doe');
+            //$message->bcc('john@johndoe.com', 'John Doe');
+        
+            //$message->replyTo('john@johndoe.com', 'John Doe');
+        
+            $message->subject('Prueba de Correo');
+        
+            //$message->priority(3);
+        
+            //$message->attach('pathToFile');
+        });
     }
 }
